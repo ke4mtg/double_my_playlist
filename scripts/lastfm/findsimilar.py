@@ -23,8 +23,8 @@ if __name__ == '__main__':
     track = api.get_track(sys.argv[2], artist=sys.argv[1])
     
     for similar in track.similar:
-        try:            
+        try:
             print '"%s" by %s' % (similar.name, similar.artist.name)
         except AttributeError, e:
             # there's no artist, album, position, etc for this track, so just exit out for now
-            pass
+            print e
