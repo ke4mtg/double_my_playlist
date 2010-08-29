@@ -6,6 +6,10 @@
 <body>
   <h1>Similar Tracks</h1>
 
+  <pre>
+    ${c.data}
+  </pre>
+
   <ol>
 % for track in c.tracks:
     <li>${track.artist.name} - ${track.name}</li>
