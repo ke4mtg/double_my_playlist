@@ -17,8 +17,10 @@ def format_duration(duration):
 
 
 if __name__ == '__main__':
+    import sys
+    
     api = lastfm.Api('578ff28eb42a625b4beb7cd1ec8c1dae')
-    track = api.get_track('Sweet Disposition', artist='The Temper Trap')
+    track = api.get_track(sys.argv[2], artist=sys.argv[1])
     
     for similar in track.similar:
         try:            

@@ -22,5 +22,6 @@ def make_map(config):
 
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/{id}')
+    map.connect('/doubler/index/{artist}/{track}', controller='doubler')
 
     return map
