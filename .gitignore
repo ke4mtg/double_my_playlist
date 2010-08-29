@@ -1,0 +1,26 @@
+# Don't include any emacs cruft
+*~
+\#*#
+
+# Don't include any compiled objects
+*.o
+*.so
+*.pyc
+
+# No log files
+*.log
+*.log.*
+
+# Don't check in zip files
+*.zip
+*.gz
+*.tar
+
+# Just say no to OS generated crud
+.DS_Store?
+
+# Ignore moat shit
+tmp_file
+*.db
+*.ram
+*.pickle
