@@ -7,39 +7,51 @@
 <body>
   <h1>Double My Playlist</h1>
 
-  <div class="contents">
-  <table width="100%">
-    <tr>
-      <td>
-        <h2>Your New Playlist</h2>
+  <div class="page-container">
+    <div class="contents">
+      <table width="100%">
+        <tr>
+          <td>
+            <h2>Your New Playlist</h2>
 % if c.results:
-        <ol class="playlist">
+              <ol class="playlist">
 % for result in c.results:
-          <li style="clear:both">
-            <div class="score">${'%02.01f' % result.score}</div> 
-            <div class="song-name">${result.track.artist.name} - ${result.track.name}</div>
-          </li>
+                <li style="clear:both">
+                  <div class="score">${'%02.01f' % result.score}</div> 
+                  <div class="song-name">${result.track.artist.name} - ${result.track.name}</div>
+                </li>
 % endfor
-        </ol>
+              </ol>
 % endif
-      </td>
+          </td>
 
-      <td valign="top" style="padding-left:30px; width:500px">
-        <h2>Original Playlist</h2>
-        <form method="post" action="/doubler/index" class="enter-playlist">
-          <div>
-            <textarea name="playlist" class="playlist-entry">${c.playlist}</textarea>
-            <div class="instructions">Enter your playlist as <code>Artist - Track</code>.  Put one track on a line.</div>
-          </div>
-          <div class="buttons">
-            <input type="submit" value="Double My Playlist!" class="button" />
-            <input type="checkbox" id="dont-repeat-artists" name="dont-repeat-artists" />
-            <label for="dont-repeat-artists">Don't repeat artists</label>
-          </div>
-        </form>
-      </td>
-    </tr>
-  </table>
+          <td valign="top" style="padding-left:30px; width:500px">
+            <h2>Original Playlist</h2>
+            <form method="post" action="/doubler/index" class="enter-playlist">
+              <div>
+                <textarea name="playlist" class="playlist-entry">${c.playlist}</textarea>
+                <div class="instructions">Enter your playlist as <code>Artist - Track</code>.  Put one track on a line.</div>
+              </div>
+              <div class="buttons">
+                <input type="submit" value="Double My Playlist!" class="button" />
+                <input type="checkbox" id="dont-repeat-artists" name="dont-repeat-artists" />
+                <label for="dont-repeat-artists">Don't repeat artists</label>
+              </div>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
+
+  <div class="page-footer">
+    <div class="copyright">
+      &copy;2010 Bobby Miller and Rob Crowell
+    </div>
+    <div class="links">
+      <a href="https://github.com/ke4mtg/double_my_playlist">/src</a>
+    </div>
+  </div>
+
 </body>
 </html>
