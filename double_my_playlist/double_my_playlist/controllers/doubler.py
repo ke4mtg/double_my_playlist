@@ -1,6 +1,7 @@
 import json
 import lastfm
 import logging
+import math
 import urllib
 
 from pylons import request, response, session, tmpl_context as c, url
@@ -23,7 +24,13 @@ class Track(object):
         self.name = name
         self.artist = artist
 
-    
+
+class TrackSearchResult(object):
+    def __init__(self, track, score=100.0):
+        self.track = track
+        self.score = math.ceil(score)
+
+
 class DoublerController(BaseController):
 
     def index(self, artist='The Temper Trap', track='Fader'):
@@ -36,19 +43,21 @@ class DoublerController(BaseController):
                       'track': track}
             data = json.loads(urllib.urlopen(LASTFM_API_PREFIX + urllib.urlencode(params)).read())
     
-            tracks = []
+            results = []
             for d in data['similartracks']['track']:
                 artist = Artist(d['artist']['name'])
                 track = Track(d['name'], artist)
-                tracks.append(track)
-            return tracks
+                result = TrackSearchResult(track, float(d['match']) * 100.0)
+                results.append(result)
+            results.sort(key=lambda x: -x.score)
+            return results
         
         c.playlist = request.params.get('playlist', 'The Temper Trap - Fader\nPearl Jam - Once')
 
         known_tracks = [x.split(' - ') for x in c.playlist.split('\n')]
-        c.tracks = []
+        c.results = []
         for artist, track in known_tracks:
             for similar_track in find_similar(artist, track):
-                c.tracks.append(similar_track)
+                c.results.append(similar_track)
             
         return render('doubler/index.html')

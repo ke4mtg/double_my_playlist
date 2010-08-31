@@ -8,20 +8,20 @@
   <h1>Double My Playlist</h1>
 
   <div class="contents">
-  <table style="width:100%">
+  <table>
     <tr>
-      <td style="width:50%">
+      <td style="width:300px">
         <h2>Your New Playlist</h2>
-% if c.tracks:
+% if c.results:
         <ol class="playlist">
-% for track in c.tracks:
-          <li>${track.artist.name} - ${track.name}</li>
+% for result in c.results:
+          <li><i>${result.score}</i> ${result.track.artist.name} - ${result.track.name}</li>
 % endfor
         </ol>
 % endif
       </td>
 
-      <td valign="top" style="padding-left:30px">
+      <td valign="top" style="padding-left:30px; width:600px">
         <h2>Original Playlist</h2>
         <form method="post" action="/doubler/index">
           <textarea name="playlist" class="playlist-entry">${c.playlist}</textarea>
