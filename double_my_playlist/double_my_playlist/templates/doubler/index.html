@@ -1,16 +1,37 @@
 <html>
 <head>
   <title>Hello World</title>
+  <link rel="stylesheet" type="text/css" href="/style.css" />
 </head>
 
 <body>
-  <h1>Similar Tracks</h1>
+  <h1>Double My Playlist</h1>
 
-  <ol>
+  <div class="contents">
+  <table style="width:100%">
+    <tr>
+      <td style="width:50%">
+        <h2>Your New Playlist</h2>
+% if c.tracks:
+        <ol class="playlist">
 % for track in c.tracks:
-    <li>${track.artist.name} - ${track.name}</li>
+          <li>${track.artist.name} - ${track.name}</li>
 % endfor
-  </ol>
+        </ol>
+% endif
+      </td>
 
+      <td valign="top" style="padding-left:30px">
+        <h2>Original Playlist</h2>
+        <form method="post" action="/doubler/index">
+          <textarea name="playlist" class="playlist-entry">${c.playlist}</textarea>
+          <br/>
+          <input type="submit" value="Double My Playlist!" />
+        </form>
+        <div>Enter your playlist in the format <code>Artist - Track</code>.  Put one track on a line.</div>
+      </td>
+    </tr>
+  </table>
+  </div>
 </body>
 </html>
