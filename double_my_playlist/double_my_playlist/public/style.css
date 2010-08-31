@@ -13,8 +13,8 @@ h1 {
     color: white;
     background-color: #0080FF;
     margin:0;
-    padding:4px;
-    font-size: 11pt;
+    padding:6px 10px 6px 10px;
+    font-size: 12pt;
     font-weight: normal;
 }
 
@@ -35,7 +35,7 @@ div.contents {
 
 div.page-footer {
     border-top: 1px solid #999;
-    padding: 10px;
+    padding: 10px 10px 30px 10px;
 }
 div.page-footer div.copyright {
     float:left;
