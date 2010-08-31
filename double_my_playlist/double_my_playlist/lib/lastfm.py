@@ -8,6 +8,14 @@ class Artist(object):
     def __init__(self, name):
         self.name = name
 
+    def __eq__(self, artist):
+        if type(self) != type(artist):
+            return False
+        return self.name == artist.name
+
+    def __hash__(self):
+        return hash(self.name)
+
 
 class Track(object):
     def __init__(self, name, artist):
@@ -20,6 +28,14 @@ class Track(object):
     def __repr__(self):
         return "Track('" + self.name + "', '" + self.artist.name + "')"
 
+    def __eq__(self, track):
+        if type(self) != type(track):
+            return False
+        return (self.artist == track.artist) and (self.name == track.name)
+
+    def __hash__(self):
+        return hash(self.name)
+
 
 class TrackSearchResult(object):
     def __init__(self, track, score=100.0):
@@ -30,9 +46,9 @@ class TrackSearchResult(object):
         return "TrackSearchResult('" + self.track.name + "', '" + str(self.score) + "')"
 
 
-def find_similar(track):
+def find_similar(track, limit=25):
     params = {'method': 'track.getSimilar',
-              'limit': 25,
+              'limit': limit,
               'format': 'json',
               'api_key': LASTFM_API_KEY,
               'artist': track.artist.name,
