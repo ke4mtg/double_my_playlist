@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Hello World</title>
+  <title>Double My Playlist</title>
   <link rel="stylesheet" type="text/css" href="/style.css" />
 </head>
 
@@ -26,12 +26,17 @@
 
       <td valign="top" style="padding-left:30px; width:500px">
         <h2>Original Playlist</h2>
-        <form method="post" action="/doubler/index">
-          <textarea name="playlist" class="playlist-entry">${c.playlist}</textarea>
-          <br/>
-          <input type="submit" value="Double My Playlist!" />
+        <form method="post" action="/doubler/index" class="enter-playlist">
+          <div>
+            <textarea name="playlist" class="playlist-entry">${c.playlist}</textarea>
+            <div class="instructions">Enter your playlist as <code>Artist - Track</code>.  Put one track on a line.</div>
+          </div>
+          <div class="buttons">
+            <input type="submit" value="Double My Playlist!" class="button" />
+            <input type="checkbox" id="dont-repeat-artists" name="dont-repeat-artists" />
+            <label for="dont-repeat-artists">Don't repeat artists</label>
+          </div>
         </form>
-        <div>Enter your playlist in the format <code>Artist - Track</code>.  Put one track on a line.</div>
       </td>
     </tr>
   </table>

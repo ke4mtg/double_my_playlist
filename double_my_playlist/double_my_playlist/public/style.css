@@ -5,6 +5,9 @@ body {
     font-size: 10pt;
     background-color: #fff;
 }
+table {
+    font-size: 10pt;
+}
 
 h1 {
     color: white;
@@ -49,4 +52,21 @@ ol.playlist li div.score {
 ol.playlist li div.song-name {
     float:left;
     width: 380px;
+}
+
+form.enter-playlist div.instructions {
+    font-size: 8pt;
+}
+form.enter-playlist div.buttons {
+    margin-top: 5px;
+}
+form.enter-playlist input.button {
+    background-color: #0080ff;
+    border: 1px solid #222;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+form.enter-playlist input.button:hover {
+    background-color: #58ACFA;
 }
