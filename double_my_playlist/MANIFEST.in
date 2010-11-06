@@ -1,0 +1,3 @@
+include double_my_playlist/config/deployment.ini_tmpl
+recursive-include double_my_playlist/public *
+recursive-include double_my_playlist/templates *
