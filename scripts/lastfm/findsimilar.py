@@ -21,8 +21,8 @@ if __name__ == '__main__':
     track = api.get_track('Sweet Disposition', artist='The Temper Trap')
     
     for similar in track.similar:
-        try:
-            print '%s/%s/%02d. %s (%s)' % (similar.artist.name, similar.album.name, similar.position, similar.name, format_duration(similar.duration))
+        try:            
+            print '"%s" by %s' % (similar.name, similar.artist.name)
         except AttributeError, e:
             # there's no artist, album, position, etc for this track, so just exit out for now
             pass
