@@ -35,7 +35,7 @@ class Track(object):
 class TrackSearchResult(object):
     def __init__(self, track, score=100.0):
         self.track = track
-        self.score = math.ceil(score)
+        self.score = score
     
     def __repr__(self):
         return "TrackSearchResult('" + self.track.name + "', '" + str(self.score) + "')"
@@ -59,7 +59,6 @@ class DoublerController(BaseController):
                 track = Track(d['name'], artist)
                 result = TrackSearchResult(track, float(d['match']) * 100.0)
                 results.append(result)
-            results.sort(key=lambda x: -x.score)
             return results
         
         c.playlist = request.params.get('playlist', 'The Temper Trap - Fader\nPearl Jam - Once')
@@ -73,7 +72,7 @@ class DoublerController(BaseController):
             cur_track = Track(track,Artist(artist))
             originals.append(cur_track)
             for similar_track in find_similar(cur_track):
-        #        c.results.append(similar_track)
+                #c.results.append(similar_track)
                 fetched.append(similar_track)
         
         scorer = Scorer(originals, fetched)
@@ -87,5 +86,6 @@ class DoublerController(BaseController):
        
         scorer.add_rule(rule_everything_gets_five, 10)
         c.results = scorer.score()[0]
+        c.results.sort(key=lambda x: -x.score)    
         
         return render('doubler/index.html')
