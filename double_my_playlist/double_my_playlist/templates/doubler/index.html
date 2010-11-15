@@ -34,7 +34,11 @@
               </div>
               <div class="buttons">
                 <input type="submit" value="Double My Playlist!" class="button" />
-                <input type="checkbox" id="dont-repeat-artists" name="dont-repeat-artists" />
+                <input type="checkbox" id="dont-repeat-artists" name="dont-repeat-artists" 
+% if c.dont_repeat_artists:
+                       checked="checked"
+% endif
+                  />
                 <label for="dont-repeat-artists">Don't repeat artists</label>
               </div>
             </form>
