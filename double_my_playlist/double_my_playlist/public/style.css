@@ -3,7 +3,7 @@ body {
     padding:0;
     font-family: helvetica, arial, sans-serif;    
     font-size: 10pt;
-    background-color: #fff;
+    background-color: #ddd;
 }
 table {
     font-size: 10pt;
@@ -22,11 +22,33 @@ h2 {
     font-size: 14pt;
 }
 
+div.page-container {
+    background-color: white;
+}
+
 div.contents {
     width: 960px;
     padding: 15px 10px 10px 10px;
     background-color: #fff;
     margin: 0 auto 0 auto;
+}
+
+div.page-footer {
+    border-top: 1px solid #999;
+    padding: 10px;
+}
+div.page-footer div.copyright {
+    float:left;
+}
+div.page-footer div.links {
+    float:right;
+}
+div.page-footer a {
+    color: #0B3861;
+    text-decoration: none;
+}
+div.page-footer a:hover {
+    color: #81BEF7;
 }
 
 textarea.playlist-entry {
