@@ -30,6 +30,6 @@ class DoublerController(BaseController):
         scorer.add_rule(rules.identity, 1)
         if c.dont_repeat_artists:
             scorer.add_rule(rules.remove_repeat_artists, 1)
-        c.results = scorer.results(max_length=max(10, len(originals)))
+        c.results = scorer.results(max_length=max(5, len(originals)))
 
         return render('doubler/index.html')

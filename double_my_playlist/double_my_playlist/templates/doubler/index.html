@@ -12,12 +12,15 @@
       <table width="100%">
         <tr>
           <td valign="top">
-            <h2>Your New Playlist</h2>
+            <h2>Your New Songs</h2>
 % if c.results:
               <ol class="playlist">
+<% cnt = 0 %>
 % for result in c.results:
+<% cnt += 1 %>
                 <li style="clear:both">
-                  <div class="score">${'%02.01f' % result.score}</div> 
+                  <div class="score">${'%02.01f' % result.score}</div>
+                  <div class="counter">${'%02d' % cnt}</div>
                   <div class="song-name">${result.track.artist.name} - ${result.track.name}</div>
                 </li>
 % endfor
