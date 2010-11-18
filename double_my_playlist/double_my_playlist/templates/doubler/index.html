@@ -25,6 +25,10 @@
                 </li>
 % endfor
               </ol>
+	      <%namespace name="gswidget" file="../gs_widget.mako"/>
+	      <div id="gs_widget_holder">
+	    	${gswidget.show_widget(songs = c.song_ids)}
+	      </div>
 % endif
           </td>
 
